@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hokkaido · 6–13 Feb 2027</title>
+  <meta name="description" content="Philip Cheung & Chan Hiu Kwan — Hokkaido itinerary, February 2027" />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --surface: #121a2b;
+      --surface-2: #182235;
+      --border: #243049;
+      --text: #e8eef8;
+      --muted: #9aabbf;
+      --accent: #6ec6ff;
+      --accent-soft: rgba(110, 198, 255, 0.12);
+      --warn: #ffc857;
+      --ok: #7ddea0;
+      --radius: 14px;
+      --max: 820px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 10% -10%, #1a2a44 0%, transparent 55%),
+                  radial-gradient(900px 500px at 100% 0%, #13283f 0%, transparent 50%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.25rem 1.1rem 3rem;
+    }
+    header.hero {
+      padding: 1.75rem 0 1.25rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      margin-bottom: 0.85rem;
+    }
+    h1 {
+      font-size: clamp(1.7rem, 4vw, 2.25rem);
+      margin: 0 0 0.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .subtitle { color: var(--muted); margin: 0 0 1rem; font-size: 1.05rem; }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .meta strong { color: var(--text); font-weight: 600; }
+    nav.toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.25rem 0 0;
+    }
+    nav.toc a {
+      font-size: 0.85rem;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text);
+      text-decoration: none;
+    }
+    nav.toc a:hover { border-color: var(--accent); color: var(--accent); }
+    section {
+      margin: 2rem 0;
+    }
+    h2 {
+      font-size: 1.2rem;
+      margin: 0 0 0.9rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.01em;
+    }
+    h3 {
+      font-size: 1rem;
+      margin: 0 0 0.35rem;
+      color: var(--accent);
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+    .card.day { background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%); }
+    .day-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.35rem 0.75rem;
+      margin-bottom: 0.55rem;
+    }
+    .day-head .date {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+    .pill {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+    }
+    .pill.open { background: rgba(255, 200, 87, 0.15); color: var(--warn); }
+    .pill.booked { background: rgba(125, 222, 160, 0.15); color: var(--ok); }
+    ul.tight {
+      margin: 0.35rem 0 0;
+      padding-left: 1.15rem;
+    }
+    ul.tight li { margin: 0.25rem 0; }
+    ul.tight li::marker { color: var(--accent); }
+    .grid {
+      display: grid;
+      gap: 0.75rem;
+    }
+    @media (min-width: 640px) {
+      .grid.two { grid-template-columns: 1fr 1fr; }
+    }
+    .muted { color: var(--muted); }
+    .note {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+    .watch-list li { margin-bottom: 0.55rem; }
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .overview-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.65rem;
+      margin-top: 0.85rem;
+    }
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.75rem 0.9rem;
+    }
+    .stat .label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    .stat .value { font-size: 1rem; font-weight: 600; margin-top: 0.15rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="eyebrow">Hokkaido · Winter 2027</div>
+      <h1>Hokkaido trip</h1>
+      <p class="subtitle">Philip Cheung &amp; Chan Hiu Kwan · 6–13 February 2027</p>
+      <div class="meta">
+        <span><strong>Route</strong> HKG → Tokyo → Chitose → Abashiri → Otaru → Toya → Shikotsu → Sapporo → HKG</span>
+        <span><strong>As of</strong> 2 Nov 2026 (Asia/Hong_Kong)</span>
+      </div>
+      <nav class="toc" aria-label="Sections">
+        <a href="#overview">Overview</a>
+        <a href="#days">Day by day</a>
+        <a href="#booked">Stays &amp; cars</a>
+        <a href="#open">Still open</a>
+        <a href="#events">Events &amp; links</a>
+      </nav>
+    </header>
+
+    <section id="overview">
+      <h2>Overview</h2>
+      <div class="overview-stats">
+        <div class="stat">
+          <div class="label">Nights</div>
+          <div class="value">7 nights</div>
+        </div>
+        <div class="stat">
+          <div class="label">Base cities</div>
+          <div class="value">Abashiri → Otaru → Toya → Shikotsu → Sapporo</div>
+        </div>
+        <div class="stat">
+          <div class="label">Flights</div>
+          <div class="value">ANA + JAL domestic</div>
+        </div>
+        <div class="stat">
+          <div class="label">Cars</div>
+          <div class="value">Nippon ×2 segments</div>
+        </div>
+      </div>
+      <p class="note" style="margin-top:1rem">Public itinerary view — booking confirmation codes and payment details are omitted.</p>
+    </section>
+
+    <section id="days">
+      <h2>Day by day</h2>
+
+      <article class="card day">
+        <div class="day-head">
+          <span class="date">Sat 6 Feb</span>
+          <span class="pill booked">Flights booked</span>
+          <span class="pill open">Dinner open</span>
+        </div>
+        <ul class="tight">
+          <li><strong>ANA NH814</strong> HKG → HND, then <strong>NH987</strong> HND → CTS</li>
+          <li><strong>JAL 2715</strong> CTS → Memanbetsu 12:45–13:30</li>
+          <li><strong>Nippon Rent-A-Car</strong> Memanbetsu — overnight (return next day)</li>
+          <li>Okhotsk Drift Ice Museum</li>
+          <li>Abashiri Prison Museum</li>
+          <li>Dinner <strong>喜八 (Kihachi)</strong> ~18:00 — <em>not booked yet</em></li>
+          <li>Stay: <strong>Dormy Inn Abashiri</strong></li>
+        </ul>
+      </article>
+
+      <article class="card day">
+        <div class="day-head">
+          <span class="date">Sun 7 Feb</span>
+          <span class="pill open">Aurora open</span>
+          <span class="pill booked">Flight &amp; car</span>
+        </div>
+        <ul class="tight">
+          <li><strong>Aurora</strong> icebreaker — prefer <strong>09:30</strong> (backup 11:00) — <em>not booked yet</em></li>
+          <li><strong>JAL 2718</strong> Memanbetsu → CTS 18:05–18:55</li>
+          <li><strong>Nippon Intermediate</strong> pickup New Chitose ~19:00 → return Fri 12 Feb 12:00 (booked with full cover)</li>
+          <li>Stay: <strong>Granbell Hotel Otaru</strong></li>
+        </ul>
+      </article>
+
+      <article class="card day">
+        <div class="day-head">
+          <span class="date">Mon 8 Feb</span>
+          <span class="pill booked">Hotel booked</span>
+        </div>
+        <ul class="tight">
+          <li>Drive toward Lake Toya</li>
+          <li>Stay: <strong>Lake View Toya Nonokaze Resort</strong> — Club Premium Spa Suite</li>
+          <li>Dinner at resort <strong>19:00</strong></li>
+        </ul>
+      </article>
+
+      <article class="card day">
+        <div class="day-head">
+          <span class="date">Tue 9 Feb</span>
+          <span class="pill booked">Hotel booked</span>
+        </div>
+        <ul class="tight">
+          <li>Drive to Lake Shikotsu</li>
+          <li>Stay: <strong>Tsuruga Bessou Ao no Za</strong> — Suite Sky Resort</li>
+        </ul>
+      </article>
+
+      <article class="card day">
+        <div class="day-head">
+          <span class="date">Wed–Thu 10–11 Feb</span>
+          <span class="pill booked">Hotel booked</span>
+          <span class="pill open">Dining open</span>
+        </div>
+        <ul class="tight">
+          <li>Stay: <strong>JR Tower Hotel Nikko Sapporo</strong> (2 nights)</li>
+          <li><strong>Kani Honke</strong> (Station branch) — prefer <strong>10 Feb 19:00</strong> — watch</li>
+          <li><strong>Sushi Miyakawa</strong> via TABLEALL — prefer <strong>11 Feb</strong> — watch</li>
+        </ul>
+      </article>
+
+      <article class="card day">
+        <div class="day-head">
+          <span class="date">Fri 12 Feb</span>
+          <span class="pill booked">Car return &amp; flight</span>
+        </div>
+        <ul class="tight">
+          <li>Return Nippon car by <strong>12:00</strong></li>
+          <li><strong>ANA NH988</strong> CTS → HND 21:45–23:30</li>
+        </ul>
+      </article>
+
+      <article class="card day">
+        <div class="day-head">
+          <span class="date">Sat 13 Feb</span>
+          <span class="pill booked">Homebound</span>
+        </div>
+        <ul class="tight">
+          <li><strong>ANA NH813</strong> HND → HKG 01:45–05:45</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="booked">
+      <h2>Booked stays &amp; cars</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>Hotels</h3>
+          <ul class="tight">
+            <li>6 Feb — Dormy Inn Abashiri</li>
+            <li>7 Feb — Granbell Hotel Otaru</li>
+            <li>8 Feb — Lake View Toya Nonokaze Resort (Club Premium Spa Suite)</li>
+            <li>9 Feb — Tsuruga Bessou Ao no Za (Suite Sky Resort)</li>
+            <li>10–11 Feb — JR Tower Hotel Nikko Sapporo</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Cars</h3>
+          <ul class="tight">
+            <li>6–7 Feb — Nippon at Memanbetsu (overnight)</li>
+            <li>7 Feb ~19:00 → 12 Feb 12:00 — Nippon Intermediate, New Chitose pickup / return (full cover)</li>
+          </ul>
+          <p class="note">Optional watch: Toyota English Poplar class if a better switch appears.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Flights (summary)</h3>
+        <ul class="tight">
+          <li>6 Feb — ANA NH814 HKG→HND · NH987 HND→CTS · JAL 2715 CTS→MMB</li>
+          <li>7 Feb — JAL 2718 MMB→CTS</li>
+          <li>12 Feb — ANA NH988 CTS→HND</li>
+          <li>13 Feb — ANA NH813 HND→HKG</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="open">
+      <h2>Still open</h2>
+      <div class="card">
+        <ul class="tight watch-list">
+          <li>
+            <span class="pill open">Watch</span>
+            <strong> Aurora icebreaker</strong> — prefer 09:30 (backup 11:00) on 7 Feb ·
+            <a href="https://ms-aurora.com/abashiri/reserves/" rel="noopener" target="_blank">ms-aurora.com</a>
+          </li>
+          <li>
+            <span class="pill open">Watch</span>
+            <strong> 喜八 (Kihachi)</strong> dinner ~18:00 on 6 Feb (席のみ) ·
+            <a href="https://www.hotpepper.jp/strJ003433036/yoyaku/" rel="noopener" target="_blank">Hot Pepper</a>
+            · phone 0152-43-8108
+          </li>
+          <li>
+            <span class="pill open">Watch</span>
+            <strong> Toyota English Poplar</strong> — optional switch vs Nippon Intermediate ·
+            <a href="https://rent.toyota.co.jp/eng/" rel="noopener" target="_blank">Toyota Rent a Car (EN)</a>
+          </li>
+          <li>
+            <span class="pill open">Watch</span>
+            <strong> Kani Honke</strong> (Sapporo Station branch) — prefer 10 Feb 19:00
+          </li>
+          <li>
+            <span class="pill open">Watch</span>
+            <strong> Sushi Miyakawa</strong> via TABLEALL — prefer 11 Feb
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="events">
+      <h2>Events &amp; links</h2>
+      <div class="card">
+        <h3>Winter festivals (overlap)</h3>
+        <ul class="tight">
+          <li>Abashiri Drift Ice Festival — 6–7 Feb</li>
+          <li>Otaru Snow Light Path — 6–13 Feb</li>
+          <li>Sapporo Snow Festival — 4–11 Feb</li>
+          <li>Shikotsu Ice Festival — 30 Jan – 23 Feb</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Useful links</h3>
+        <ul class="tight">
+          <li><a href="https://www.hotpepper.jp/strJ003433036/yoyaku/" rel="noopener" target="_blank">Hot Pepper — 喜八 booking</a></li>
+          <li><a href="https://ms-aurora.com/abashiri/reserves/" rel="noopener" target="_blank">Aurora Abashiri reservations</a></li>
+          <li><a href="https://rent.toyota.co.jp/eng/" rel="noopener" target="_blank">Toyota Rent a Car (English)</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      Hokkaido trip · Feb 2027 · updated 2 Nov 2026
+    </footer>
+  </div>
+</body>
+</html>
